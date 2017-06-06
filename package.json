@@ -20,5 +20,10 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
     "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sonar": "^3.0.1",
+    "yargs": "^8.0.1"
   }
 }
