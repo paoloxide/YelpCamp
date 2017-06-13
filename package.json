@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node /usr/src/app/app.js",
     "test": "mocha"
   },
   "author": "",
