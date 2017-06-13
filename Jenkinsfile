@@ -203,7 +203,7 @@ try{
 			stage "Compress Project"
 				sh """
 					if [ ${EXECUTION_TYPE} = "SERVICE" ]; then
-					  zip -r ybusa_${SERVICE_NAME}.zip *  
+					  zip -r ${SERVICE_NAME}.zip *  
 					fi
 					pwd && ls -lart 
 				"""
@@ -239,7 +239,7 @@ try{
 
 			stage "Retrieve Compressed Service"
 				sh "pwd && ls -lart"
-				sh "docker cp jenkins:${CUSTOM_WORKSPACE}/ybusa_${SERVICE_NAME}.zip ."
+				sh "docker cp jenkins:${CUSTOM_WORKSPACE}/${SERVICE_NAME}.zip ."
 				sh "pwd && ls -lart"
 
 			stage "Checkout Ansible Deployment Playbook"
