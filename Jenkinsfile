@@ -256,7 +256,7 @@ try{
 					    pwd && ls -lrtah
 					    rm -f ${CUSTOM_WORKSPACE2}/mochawesome-reports.tar
 					    pwd && ls -lrtah
-					    ansible-playbook service_test.yml -i hosts -u ec2-user --extra-vars "environment='test' service_name=${SERVICE_NAME} service_inbound_port=${SERVICE_INBOUND_PORT} service_outbound_port=${SERVICE_OUTBOUND_PORT_MOCK} current_branch=${CURRENT_BRANCH} dev_server=${DEV_SERVER} custom_workspace=${CUSTOM_WORKSPACE} execution_type=${EXECUTION_TYPE} docker_service_name=${DOCKER_SERVICE_NAME}_test docker_service_tag=${DOCKER_SERVICE_TAG} service_version=${SERVICE_VERSION}"
+					    ansible-playbook service_test.yml -i hosts -u ec2-user --extra-vars "projectEnv='test' service_name=${SERVICE_NAME} service_inbound_port=${SERVICE_INBOUND_PORT} service_outbound_port=${SERVICE_OUTBOUND_PORT_MOCK} current_branch=${CURRENT_BRANCH} dev_server=${DEV_SERVER} custom_workspace=${CUSTOM_WORKSPACE} execution_type=${EXECUTION_TYPE} docker_service_name=${DOCKER_SERVICE_NAME}_test docker_service_tag=${DOCKER_SERVICE_TAG} service_version=${SERVICE_VERSION}"
 					    pwd && ls -lrtah
 						
 						ls -lrtah
@@ -318,7 +318,7 @@ try{
 				
 				stage "Run Deployment in Playbook"
 					sshagent (credentials: ['ansible-user-key']) {
-					  sh "ansible-playbook service_deploy.yml -i hosts -u ec2-user --extra-vars \"environment='dev' docker_container_options=${DOCKER_CONTAINER_OPTIONS} service_name=${SERVICE_NAME} service_outbound_port=${SERVICE_OUTBOUND_PORT} service_inbound_port=${SERVICE_INBOUND_PORT} dev_server=${DEV_SERVER} current_branch=${CURRENT_BRANCH} custom_workspace=${CUSTOM_WORKSPACE} execution_type=${EXECUTION_TYPE} docker_service_name=${DOCKER_SERVICE_NAME}_dev docker_service_tag=${DOCKER_SERVICE_TAG} service_version=${SERVICE_VERSION}\" "
+					  sh "ansible-playbook service_deploy.yml -i hosts -u ec2-user --extra-vars \"projectEnv='dev' docker_container_options=${DOCKER_CONTAINER_OPTIONS} service_name=${SERVICE_NAME} service_outbound_port=${SERVICE_OUTBOUND_PORT} service_inbound_port=${SERVICE_INBOUND_PORT} dev_server=${DEV_SERVER} current_branch=${CURRENT_BRANCH} custom_workspace=${CUSTOM_WORKSPACE} execution_type=${EXECUTION_TYPE} docker_service_name=${DOCKER_SERVICE_NAME}_dev docker_service_tag=${DOCKER_SERVICE_TAG} service_version=${SERVICE_VERSION}\" "
 				    }
 
 		//		stage "Run Production Deployment in Playbook"
