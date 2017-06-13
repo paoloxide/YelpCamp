@@ -203,7 +203,8 @@ try{
 			stage "Compress Project"
 				sh """
 					if [ ${EXECUTION_TYPE} = "SERVICE" ]; then
-					  zip -r ${SERVICE_NAME}.zip *  
+					  zip -r ${SERVICE_NAME}_test.zip *
+					  cp ${SERVICE_NAME}_test.zip ${SERVICE_NAME}_dev.zip
 					fi
 					pwd && ls -lart 
 				"""
@@ -239,7 +240,8 @@ try{
 
 			stage "Retrieve Compressed Service"
 				sh "pwd && ls -lart"
-				sh "docker cp jenkins:${CUSTOM_WORKSPACE}/${SERVICE_NAME}.zip ."
+				sh "docker cp jenkins:${CUSTOM_WORKSPACE}/${SERVICE_NAME}_test.zip ."
+				sh "docker cp jenkins:${CUSTOM_WORKSPACE}/${SERVICE_NAME}_dev.zip ."
 				sh "pwd && ls -lart"
 
 			stage "Checkout Ansible Deployment Playbook"
@@ -256,7 +258,7 @@ try{
 					    pwd && ls -lrtah
 					    rm -f ${CUSTOM_WORKSPACE2}/mochawesome-reports.tar
 					    pwd && ls -lrtah
-					    ansible-playbook service_test.yml -i hosts -u ec2-user --extra-vars "projectEnv='test' service_name=${SERVICE_NAME} service_inbound_port=${SERVICE_INBOUND_PORT} service_outbound_port=${SERVICE_OUTBOUND_PORT_MOCK} current_branch=${CURRENT_BRANCH} dev_server=${DEV_SERVER} custom_workspace=${CUSTOM_WORKSPACE} execution_type=${EXECUTION_TYPE} docker_service_name=${DOCKER_SERVICE_NAME}_test docker_service_tag=${DOCKER_SERVICE_TAG} service_version=${SERVICE_VERSION}"
+					    ansible-playbook service_test.yml -i hosts -u ec2-user --extra-vars "projectEnv='test' docker_container_options=${DOCKER_CONTAINER_OPTIONS} service_name=${SERVICE_NAME} service_inbound_port=${SERVICE_INBOUND_PORT} service_outbound_port=${SERVICE_OUTBOUND_PORT_MOCK} current_branch=${CURRENT_BRANCH} dev_server=${DEV_SERVER} custom_workspace=${CUSTOM_WORKSPACE} execution_type=${EXECUTION_TYPE} docker_service_name=${DOCKER_SERVICE_NAME}_test docker_service_tag=${DOCKER_SERVICE_TAG} service_version=${SERVICE_VERSION}"
 					    pwd && ls -lrtah
 						
 						ls -lrtah
