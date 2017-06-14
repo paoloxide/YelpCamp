@@ -357,5 +357,5 @@ try{
 			currentBuild.result = "UNSTABLE"
 		}
 		
-		slacknotifyJob(currentBuild.result,BUILDSTAGE_STATUS,DEPLOYSTAGE_STATUS,TESTSTAGE_STATUS,CHANNEL,TOKEN_ID)
+		// slacknotifyJob(currentBuild.result,BUILDSTAGE_STATUS,DEPLOYSTAGE_STATUS,TESTSTAGE_STATUS,CHANNEL,TOKEN_ID)
 }
