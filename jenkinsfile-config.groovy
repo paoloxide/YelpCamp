@@ -1,4 +1,4 @@
-docker_CONTAINER_OPTIONS = '" --net yelpcamp_net --link yelpcamp_db:mongo "'
+docker_CONTAINER_OPTIONS = ""
 ip_DEV_SERVER = "52.213.201.100"
 port_DEV_SERVER_mock = "8184"
 port_DEV_SERVER_develop = "80"
