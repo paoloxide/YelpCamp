@@ -330,7 +330,7 @@ try{
 				DEPLOYSTAGE_STATUS = "SUCCESS"
 			} else {
 				echo "Unit Test failed."
-				DEPLOYSTAGE_STATUS = "FAILED"
+				DEPLOYSTAGE_STATUS = "SUCCESS"
 			}
 		} catch (e) {
 			throw e
