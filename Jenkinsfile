@@ -256,7 +256,7 @@ try{
 					sshagent (credentials: ['ansible-user-key']) {
 					  sh """
 					    pwd && ls -lrtah
-					    rm -f ${CUSTOM_WORKSPACE2}/mochawesome-reports.tar
+					    rm -f ${CUSTOM_WORKSPACE2}/mochawesome-report.tar
 					    pwd && ls -lrtah
 					    ansible-playbook service_test.yml -i hosts -u ec2-user --extra-vars "projectEnv='test' docker_container_options=${DOCKER_CONTAINER_OPTIONS} service_name=${SERVICE_NAME} service_inbound_port=${SERVICE_INBOUND_PORT} service_outbound_port=${SERVICE_OUTBOUND_PORT_MOCK} current_branch=${CURRENT_BRANCH} dev_server=${DEV_SERVER} custom_workspace=${CUSTOM_WORKSPACE} execution_type=${EXECUTION_TYPE} docker_service_name=${DOCKER_SERVICE_NAME}_test docker_service_tag=${DOCKER_SERVICE_TAG} service_version=${SERVICE_VERSION}"
 					    pwd && ls -lrtah
@@ -271,8 +271,8 @@ try{
 					
 					PUBLISH_UNIT_TEST = sh (
 						script: """
-							if [ -f ./mochawesome-reports.tar ]; then
-					      		tar -xvf mochawesome-reports.tar -C ./
+							if [ -f ./mochawesome-report.tar ]; then
+					      		tar -xvf mochawesome-report.tar -C ./
 								exit 0
 							else
 								exit 1
@@ -288,7 +288,7 @@ try{
 							allowMissing: false,
 							alwaysLinkToLastBuild: false,
 							keepAll: true,
-							reportDir: 'mochawesome-reports',
+							reportDir: 'mochawesome-report',
 							reportFiles: 'mochawesome.html',
 							reportName: "Mocha Unit Test Report"	
 						])
