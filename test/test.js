@@ -8,7 +8,7 @@ var options = {
 var app =  require("../app.js");
 var should = require('should'); 
 var supertest = require('supertest');
-var assert = require('assert');
+//var assert = require('assert');
 var async = require('async');
 
 var server = supertest.agent("http://localhost:"+ process.env.PORT + "/");

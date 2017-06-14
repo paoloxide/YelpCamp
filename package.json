@@ -9,10 +9,8 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-      "zombie": "2.0.0-alpha11"
-  },
   "dependencies": {
+    "async": "^2.0.1",
     "body-parser": "^1.15.2",
     "connect-flash": "^0.1.1",
     "ejs": "^2.5.5",
@@ -26,6 +24,8 @@
     "request": "^2.79.0"
   },
   "devDependencies": {
-    "zombie": "^5.0.5"
+    "zombie": "^5.0.5",
+    "should": "^11.1.2",
+    "supertest": "^2.0.1"
   }
 }
